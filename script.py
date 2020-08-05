@@ -4,20 +4,19 @@ import numpy as np
 import os
 import array as arr
 
+M, gamma_r = 1000, 0.8
+pop = []
+m = np.array([x + 1 for x in range(M + 1)])
+denum = sum(1 / ((m) ** gamma_r))
 
-##########################
-M = np.zeros((1000))
-Z = np.zeros((1000))
-zipf_exp = 0.6
-fre = np.zeros((1000))
+for c in range(M + 1):
+    numen = 1 / ((c + 1) ** gamma_r)
+    pop.append(float(numen / denum))
 
-for file_index in range(1000):
-    numen = 1 / ((file_index + 1) ** zipf_exp)
-    denum = sum(1 / ((Z + 1) ** zipf_exp))
-    fre[file_index] = numen / denum
+print(sum(pop))
 
-print(fre)
-print(sum(fre))
+
+# print(fre)
 
 
 # frequency_i = (1/(file_index^zipf_exp))/sum( 1/(z^(zipf_exp)))
