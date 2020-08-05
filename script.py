@@ -4,18 +4,20 @@ import numpy as np
 import os
 import array as arr
 
-M = list(range(1, 1000))
-z = list(range(1, 1000))
 
+##########################
+M = np.zeros((1000))
+Z = np.zeros((1000))
 zipf_exp = 0.6
-fre = np.empty((1, M))
+fre = np.zeros((1000))
 
-for file_index in M:
-    numen = 1 / file_index ** zipf_exp
-    denum = sum(1 / (z ** zipf_exp))
-    fre[file_index - 1] = numen / denum
+for file_index in range(1000):
+    numen = 1 / ((file_index + 1) ** zipf_exp)
+    denum = sum(1 / ((Z + 1) ** zipf_exp))
+    fre[file_index] = numen / denum
 
 print(fre)
+print(sum(fre))
 
 
 # frequency_i = (1/(file_index^zipf_exp))/sum( 1/(z^(zipf_exp)))
